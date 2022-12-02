@@ -4,6 +4,10 @@ const DING_API = "https://oapi.dingtalk.com/robot/send";
 
 module.exports = async (req, res) => {
   const { body, query } = req;
+  console.log(req)
+  if (req.method.toLowerCase() == 'options') {
+    res.send(200);  // 让options尝试请求快速结束
+  }
   console.log(body);
   const { access_token } = query;
 
