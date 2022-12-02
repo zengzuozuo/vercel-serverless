@@ -11,13 +11,15 @@ module.exports = async (req, res) => {
     res.send(200);  // 让options尝试请求快速结束
     return
   }
-  console.log(req);
   console.log(body);
+  console.log(process.env)
+  console.log(process.env.TOKEN)
   const { access_token } = query;
 
   if (access_token) {
-    if(!body || !body.event) {
-      res.send("event is required");
+    if(!body) {
+      res.send("data is required");
+      return
     }
     const reportMsg =
       `Project: ${body.project_name}\n` +
