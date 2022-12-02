@@ -3,7 +3,7 @@ const axios = require("axios");
 const DING_API = "https://oapi.dingtalk.com/robot/send";
 
 module.exports = async (req, res) => {
-  const { body, query } = req;
+  const { body } = req;
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
@@ -12,10 +12,7 @@ module.exports = async (req, res) => {
     return
   }
   console.log(body);
-  console.log(process.env)
-  console.log(process.env.TOKEN)
-  const { access_token } = query;
-
+  access_token = process.env.TOKEN
   if (access_token) {
     if(!body) {
       res.send("data is required");
