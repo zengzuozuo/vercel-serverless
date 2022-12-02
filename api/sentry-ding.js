@@ -12,7 +12,7 @@ module.exports = async (req, res) => {
     return
   }
   console.log(body);
-  access_token = process.env.TOKEN
+  const access_token = process.env.TOKEN
   if (access_token) {
     if(!body) {
       res.send("data is required");
