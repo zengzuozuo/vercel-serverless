@@ -5,6 +5,9 @@ const DING_API = "https://oapi.dingtalk.com/robot/send";
 module.exports = async (req, res) => {
   const { body, query } = req;
   console.log(req)
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
   if (req.method.toLowerCase() == 'options') {
     res.send(200);  // 让options尝试请求快速结束
   }
@@ -31,9 +34,7 @@ module.exports = async (req, res) => {
         }
       }
     });
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
+    
     res.send(resData);
   } else {
     res.send("access_token is required");
