@@ -21,7 +21,7 @@ module.exports = async (req, res) => {
     const reportMsg =
       `Project: ${body.project_name}\n` +
       `Error: ${body.message}\n` +
-      `Sentry Issue: ${body.url}`;
+      `Source: ${body.url}`;
 
     const { data: resData } = await axios({
       method: "post",
